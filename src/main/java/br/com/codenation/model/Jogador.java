@@ -20,6 +20,7 @@ public class Jogador {
         this.idTime = idTime;
         this.nome = nome;
         this.dataNascimento = dataNascimento;
+        this.nivelHabilidade = nivelHabilidade;
         this.salario = salario;
     }
 

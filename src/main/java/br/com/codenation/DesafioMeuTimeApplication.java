@@ -14,8 +14,8 @@ import static java.util.Comparator.comparing;
 
 public class DesafioMeuTimeApplication implements MeuTimeInterface {
 
-	private static List<Time> times = new ArrayList<>();
-	private static List<Jogador> jogadores = new ArrayList<>();
+	private final List<Time> times = new ArrayList<>();
+	private final List<Jogador> jogadores = new ArrayList<>();
 
 	private Boolean existeTime (Long id) {
 		return times.stream().filter(t -> t.getId() == id).findAny().isPresent();
