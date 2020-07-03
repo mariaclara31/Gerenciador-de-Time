@@ -1,8 +1,6 @@
-package br.com.codenation;
+package br.com.codenation.model;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 public class Time {
@@ -12,15 +10,30 @@ public class Time {
     private LocalDate dataCriacao;
     private String corUniformePrincipal;
     private String coruUniformeSecundario;
-    private List<Jogador> jogadores;
     private Jogador capitao;
 
-    public Time(Long id, String nome, LocalDate dataCriacao, String corUniformePrincipal, String corUniformeSecundario)  {
-        this.setId(id);
-        this.setNome(nome);
-        this.setDataCriacao(dataCriacao);
-        this.setCorUniformePrincipal(corUniformePrincipal);
-        this.setCorUniformeSecundario(corUniformeSecundario);
+    @java.lang.Override
+    public java.lang.String toString() {
+        return "Time{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", dataCriacao=" + dataCriacao +
+                ", corUniformePrincipal='" + corUniformePrincipal + '\'' +
+                ", coruUniformeSecundario='" + coruUniformeSecundario + '\'' +
+                ", capitao=" + capitao +
+                '}';
+    }
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        Time time = (Time) object;
+        return id.equals(time.id);
+    }
+
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), id);
     }
 
     public Long getId() {
@@ -63,18 +76,6 @@ public class Time {
         this.coruUniformeSecundario = coruUniformeSecundario;
     }
 
-    public List<Jogador> getJogadores() {
-        return jogadores;
-    }
-
-    public void setJogadores(List<Jogador> jogadores) {
-        this.jogadores = jogadores;
-    }
-
-    public void addJogador(Jogador jogador) {
-        this.jogadores.add(jogador);
-    }
-
     public Jogador getCapitao() {
         return capitao;
     }
@@ -83,37 +84,11 @@ public class Time {
         this.capitao = capitao;
     }
 
-    public int hashCode() {
-        int hash = 7;
-        return hash;
-    }
-
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if(obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Time other = (Time) obj;
-        if(!Objects.equals(this.nome, other.nome)) {
-            return false;
-        }
-        if(!Objects.equals(this.corUniformePrincipal, other.corUniformePrincipal)) {
-            return false;
-        }
-        if(!Objects.equals(this.coruUniformeSecundario, other.coruUniformeSecundario)) {
-            return false;
-        }
-        if(!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        if(!Objects.equals(this.dataCriacao, other.dataCriacao)) {
-            return false;
-        }
-        return true;
+    public Time(Long id, String nome, LocalDate dataCriacao, String corUniformePrincipal, String coruUniformeSecundario) {
+        this.id = id;
+        this.nome = nome;
+        this.dataCriacao = dataCriacao;
+        this.corUniformePrincipal = corUniformePrincipal;
+        this.coruUniformeSecundario = coruUniformeSecundario;
     }
 }

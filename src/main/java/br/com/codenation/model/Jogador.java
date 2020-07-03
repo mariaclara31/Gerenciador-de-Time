@@ -1,7 +1,8 @@
-package br.com.codenation;
+package br.com.codenation.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class Jogador {
 
@@ -15,11 +16,35 @@ public class Jogador {
     public Jogador() {}
 
     public Jogador(Long id, Long idTime, String nome, LocalDate dataNascimento, Integer nivelHabilidade, BigDecimal salario) {
-        this.setId(id);
-        this.setIdTime(idTime);
-        this.setNome(nome);
-        this.setDataNascimento(dataNascimento);
-        this.setSalario(salario);
+        this.id = id;
+        this.idTime = idTime;
+        this.nome = nome;
+        this.dataNascimento = dataNascimento;
+        this.salario = salario;
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return "Jogador{" +
+                "id=" + id +
+                ", idTime=" + idTime +
+                ", nome='" + nome + '\'' +
+                ", dataNascimento=" + dataNascimento +
+                ", nivelHabilidade=" + nivelHabilidade +
+                ", salario=" + salario +
+                '}';
+    }
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        Jogador jogador = (Jogador) object;
+        return id.equals(jogador.id);
+    }
+
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), id);
     }
 
     public Long getId() {
